@@ -1,0 +1,170 @@
+  <!-- ---------------------------------  Exercise 1 --------------------------------------- -->
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col"></div>
+    <div class="col">
+      <h2 style="text-align: center; margin: 20px;">Exercise 1</h2>
+    </div>
+    <div class="col">
+      <p style="background-color: #D5D5D5; border: 1px solid grey; margin-top: 25px; padding: 10px; text-align: center;">{{actualDate}}</p>
+    </div>
+
+  </div>
+
+   <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text">Message</label>
+    </div>
+    <input type="text" class="form-control" placeholder="Write what you want" id="username" name="username" [(ngModel)]="username">
+  </div>
+
+  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Font Styles</label>
+      </div>
+      <select class="custom-select" id="inputGroupSelect01" name="style" [(ngModel)]="style">
+        <option value="Courier">Courier</option>
+        <option value="Homer Simpson UI">Homer Simpson UI</option>
+        <option value="Helvetica">Helvetica</option>
+      </select>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text">Font Size</label>
+    </div>  
+   <input type="text" class="form-control" placeholder="Write font size" id="font" name="font" [(ngModel)]="font">
+  </div>
+
+  <label>Alignment: </label>
+  <label style="margin-left: 20px;"><input type="radio" id="alignment" name="alignment" [(ngModel)]="alignment" value="left">Left</label>
+  <label style="margin-left: 20px;"><input type="radio" id="alignment" name="alignment" [(ngModel)]="alignment" value="center">Center</label>
+  <label style="margin-left: 20px;"><input type="radio" id="alignment" name="alignment" [(ngModel)]="alignment" value="right">Right</label>
+
+  <p [ngStyle]="{'font-size.px': font, 'font-family': style, 'text-align': alignment}" style="text-transform: uppercase;"> {{username}} </p>
+
+</div>
+
+  <br>
+
+  <hr>
+
+  <br>
+
+  <!-- ---------------------------------  Exercise 2 --------------------------------------- -->
+
+  <h2 style="margin-bottom: 20px; text-align: center;">Exercise 2</h2>
+
+<div class="container" style="display: inline-flex; margin-top: 20px;">
+
+  <div class="input-group mb-3">
+      <input type="number" class="form-control" placeholder="Write a number" id="num1" name="num1" [(ngModel)]="num1">
+  </div>
+
+  <div class="input-group mb-3" style="margin-left: 40px;">
+      <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Operation</label>
+      </div>
+      <select class="custom-select" id="inputGroupSelect01" id="operation" name="operation" [(ngModel)]="operation">
+      <option value="sum">Sum</option>
+      <option value="subtraction">Subtraction</option>
+      <option value="multiplication">Multiplication</option>
+      <option value="division">Division</option>
+      </select>
+  </div>
+
+  <div class="input-group mb-3" style="margin-right: 40px;">
+      <input type="number" class="form-control" placeholder="Write a number" id="num2" name="num2" [(ngModel)]="num2">
+  </div>
+
+  <button class="btn btn-primary" style="margin-right: 40px;" (click)="operate()">Operate</button>
+
+  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text">Result</label>
+      </div>
+      <input type="text" class="form-control" readonly id="result" name="result" [(ngModel)]="result">
+  </div>
+
+  <br>
+  <br>
+
+</div>
+
+<table class="table">
+  <thead class="thead-dark">
+
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Operation</th>
+      <th scope="col">Result</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    
+    <tr *ngFor="let a of operations let i = index">
+      <td>{{a.date}}</td>
+      <td>{{a.operat}}</td>
+      <td>{{a.result}}</td>
+      <td><button (click)="delete(i)" class="btn btn-primary">Delete</button></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<!-- ---------------------------------  Exercise 3 --------------------------------------- -->
+
+<h2 style="margin-bottom: 20px; text-align: center; margin-top: 20px;">Exercise 3</h2>
+
+<!-- <button (click)="ver()" class="btn btn-primary">Ver</button> -->
+
+<div style="display: inline-flex;">
+
+  <button style="margin: 10px;" (click)="sortId()" class="btn btn-primary">Sort by Id</button>
+  <button style="margin: 10px;" (click)="sortAmount()" class="btn btn-primary">Sort by Amount</button>
+  <button style="margin: 10px;" (click)="sortBalance()" class="btn btn-primary">Sort by Balance</button>
+  <button style="margin: 10px;" (click)="sortLabel()" class="btn btn-primary">Sort by Label</button>
+  <button style="margin: 10px;" (click)="sortDate()" class="btn btn-primary">Sort by Date</button>
+
+</div>
+
+
+<table class="table">
+  <thead class="thead-dark">
+
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Balance</th>
+      <th scope="col">Label</th>
+      <th scope="col">Date</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    
+    <tr *ngFor="let b of transaction let j = index">
+      <td>{{b.id}}</td>
+      <td>{{b.amount}}</td>
+      <td>{{b.balance}}</td>
+      <td>{{b.label}}</td>
+      <td>{{b.date}}</td>
+      <td><button (click)="details(b.id)" class="btn btn-primary">Details</button></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<hr>
+
+<h4 style="text-align: center; margin: 20px;">More Details</h4>
+
+<p id="elemid"></p>
+<p id="elemamount"></p>
+<p id="elembalance"></p>
+<p id="elemlabel"></p>
+<p id="elemdate"></p>
